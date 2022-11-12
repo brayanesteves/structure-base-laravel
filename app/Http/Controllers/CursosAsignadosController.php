@@ -7,6 +7,7 @@ use App\Models\Cursos;
 use App\Models\CursosAsignados;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CursosAsignadosController extends Controller {
     /**
@@ -23,7 +24,7 @@ class CursosAsignadosController extends Controller {
         })->leftJoin('cursos', function($join) {
             $join->on('cursos_asignados.reference_curso', '=', 'cursos.id'); 
         })
-        ->select('cursos_asignados.*', 'estudiantes.name', 'estudiantes.lastname', 'cursos.name AS name_curso')
+        ->select('cursos_asignados.id', 'estudiantes.id AS idEstudiante','estudiantes.name', 'estudiantes.lastname', 'cursos.name AS name_curso', 'cursos.id AS idCurso')
         ->get();;
         return view('assign.index')->with('estudiantes', $estudiantes)->with('course', $cursos)->with('studentsAssign', $studentsAssign)->with('studentsAssign_LeftJoin', $studentsAssign_LeftJoin);
     }
@@ -45,8 +46,14 @@ class CursosAsignadosController extends Controller {
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        //
+    public function store(Request $request) {         
+
+            $assign = CursosAsignados::create($request->only('reference_estudiante', 'reference_curso'));
+            /**
+             * Mostramos el mensaje de que se registro correctamente los datos.
+             */
+            Session::flash('messageSuccessful', 'Se ha registrado correctamente.');
+            return redirect()->route('assign.index');
     }
 
     /**
