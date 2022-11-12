@@ -45,7 +45,7 @@ class CursosController extends Controller {
              * Mostramos el mensaje de que se registro correctamente los datos.
              */
             Session::flash('messageSuccessful', 'Se ha registrado correctamente.');
-            return redirect()->route('courses.index');
+            return redirect()->route('course.index');
     }
 
     /**
@@ -108,6 +108,6 @@ class CursosController extends Controller {
         * Mostramos el mensaje de que se registro correctamente los datos.
         */
         Session::flash('messageDeleteSuccessful', 'Se ha eliminado ' . $course->name . ' correctamente.');
-        return redirect()->route('courses.index');
+        return redirect()->route('course.index');
     }
 }
