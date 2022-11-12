@@ -1,6 +1,8 @@
 <?php
 
     use App\Http\Controllers\EstudianteController;
+    use App\Http\Controllers\CursosController;
+    use App\Http\Controllers\CursosAsignadosController;
     use Illuminate\Support\Facades\Route;
 
     /*
@@ -29,7 +31,7 @@
     Route::get('/estudiante/{estudiante}',    ['as' => 'estudiante.edit',    'uses' => 'EstudianteController@edit']);
     Route::delete('/estudiante/{estudiante}', ['as' => 'estudiante.destroy', 'uses' => 'EstudianteController@destroy']);
 
-     /**
+    /**
      * Nos permite acceder a los métodos de 'CursosController'
      */
     Route::get('/course',                    ['as' => 'course.index',   'uses' => 'CursosController@index']);
@@ -39,5 +41,16 @@
     Route::put('/course/{course}/update',    ['as' => 'course.update',  'uses' => 'CursosController@update']);
     Route::get('/course/{course}/edit',      ['as' => 'course.edit',    'uses' => 'CursosController@edit']);
     Route::delete('/course/{course}/delete', ['as' => 'course.destroy', 'uses' => 'CursosController@destroy']);
+
+    /**
+     * Nos permite acceder a los métodos de 'CursosAsignadosController'
+     */
+    Route::get('/assign',                    ['as' => 'assign.index',   'uses' => 'CursosAsignadosController@index']);
+    Route::post('/assign',                   ['as' => 'assign.store',   'uses' => 'CursosAsignadosController@store']);
+    Route::get('/assign/create',             ['as' => 'assign.create',  'uses' => 'CursosAsignadosController@create']);
+    Route::get('/assign/{assign}',           ['as' => 'assign.show',    'uses' => 'CursosAsignadosController@show']);
+    Route::put('/assign/{assign}/update',    ['as' => 'assign.update',  'uses' => 'CursosAsignadosController@update']);
+    Route::get('/assign/{assign}/edit',      ['as' => 'assign.edit',    'uses' => 'CursosAsignadosController@edit']);
+    Route::delete('/assign/{assign}/delete', ['as' => 'assign.destroy', 'uses' => 'CursosAsignadosController@destroy']);
 
 ?>

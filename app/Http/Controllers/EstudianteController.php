@@ -13,7 +13,7 @@
          * @return \Illuminate\Http\Response
          */
         public function index() {
-            $estudiantes = Estudiante::paginate(5);
+            $estudiantes = Estudiante::all();
             return view('estudiante.index')->with('estudiantes', $estudiantes);
         }
 

@@ -13,7 +13,7 @@ class CursosController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $cursos = Cursos::paginate(5);
+        $cursos = Cursos::all();
         return view('courses.index')->with('course', $cursos);
     }
 
