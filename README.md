@@ -25,7 +25,7 @@ El código se encuentra implementado con [PHP], [MySQL] (Hasta el momento)
 
 | Tecnología     | versión    | link                                                          |
 |----------------|------------|---------------------------------------------------------------|
-| Laravel | **v8** |  |
+| Laravel | **v8** | **v8** |  |
 
 ## Docker
 
